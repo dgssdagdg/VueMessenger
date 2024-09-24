@@ -62,6 +62,14 @@ export default {
     },
     methods: {
         async startRecording() {
+            const devices = await navigator.mediaDevices.enumerateDevices();
+            // Ищем микрофоны в списке устройств
+            const microphones = devices.filter(device => device.kind === 'audioinput');
+            // Проверяем, есть ли хоть один микрофон
+            if (!microphones.length > 0) {
+                alert("Микрофон неподключен!");
+                return
+            }
             const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
             this.mediaRecorder = new MediaRecorder(stream);
             this.mediaRecorder.start();

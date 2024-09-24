@@ -69,8 +69,7 @@ export default {
 }
 .notifications-avatar {
     position: relative;
-    min-width: 48px;
-    max-width: 48px;
+    width: 48px;
     height: 48px;
     & img {
         border-radius: 100%;

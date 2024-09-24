@@ -39,7 +39,7 @@
         
         <div class="chat-files-form-end">
             <my-input placeholder="Добавить подпись..." v-model="signature" class="chat-files-form-input"/>
-            <button type="submit" class="chat-files-form-btn">Отправить</button>
+            <my-button type="submit" class="chat-files-form-btn">Отправить</my-button>
         </div>
     </form>
 </div>

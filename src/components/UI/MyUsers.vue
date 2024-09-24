@@ -13,10 +13,10 @@
         </div>
         <div class="messenger-left-users-user-info">
             <div class="messenger-left-users-user-top">
-            <div class="messenger-left-users-user-name">{{user.name}}</div>
-            <div class="messenger-left-users-user-date">{{ user.date }}</div>
+            <div class="messenger-left-users-user-name _btns-tabs-names_in_msgs">{{user.name}}</div>
+            <div class="messenger-left-users-user-date _secondary">{{ user.date }}</div>
             </div>
-            <div class="messenger-left-users-user-last_message">
+            <div class="messenger-left-users-user-last_message _main">
                 {{userLastReport}}
             </div>
         </div>
@@ -56,7 +56,7 @@ export default {
         userLastReport() {
             let userLastReport = this.user.body[this.user.body.length - 1]
             if(userLastReport) {
-                return userLastReport.type == 'photo' ? 'Фотография' : userLastReport.type == 'file' ? 'Файл' : userLastReport.type == 'voice' ? 'Голосовое сообщение' : userLastReport.title
+                return userLastReport.type == 'photo' ? 'Фотография' : userLastReport.type == 'file' ? 'Файл' : userLastReport.type == 'voice' ? 'Голосовое сообщение' : userLastReport.title.split(' ').slice(0, 3).join(' ')
             }
             
             return 'Сообщение'
@@ -106,18 +106,6 @@ export default {
     font-size: 16px;
     font-weight: 700;
     line-height: calc(22 / 16 * 100%);
-}
-.messenger-left-users-user-date {
-    color: rgb(124, 128, 146);
-    font-size: 12px;
-    font-weight: 500;
-    line-height: calc(15 / 12 * 100%);
-}
-.messenger-left-users-user-last_message {
-    color: rgb(124, 128, 146);
-    font-size: 16px;
-    font-weight: 500;
-    line-height: calc(19 / 16 * 100%);
 }
 .active-user {
     background: rgb(48, 50, 62);

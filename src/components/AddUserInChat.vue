@@ -22,7 +22,7 @@
                             <img :src="user.imgSrc ? user.imgSrc : require('@/assets/img/avatar.jpeg')" alt="Avatar Img">
                             <div style="color: #000;" class="_btns-tabs-names_in_msgs">{{ user.name }}</div>
                         </div>
-                        <button @click="$store.dispatch('addNewUserInChat', user)" type="button" class="_blue-button _notification-main1">Добавить</button>
+                        <my-button @click="$store.dispatch('addNewUserInChat', user)">Добавить</my-button>
                     </div>
                 </div>
             </div>

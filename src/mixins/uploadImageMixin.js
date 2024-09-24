@@ -10,7 +10,6 @@ export default {
         async uploadImage(file) {
             try {
                 const storageRef = ref(storage, `images/${file.name}`);
-                
                 // Создаем объект метаданных с заголовками кэширования
                 const metadata = {
                     cacheControl: 'public, max-age=900', // Кэшировать файл на 15 минут

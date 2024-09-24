@@ -8,19 +8,21 @@
                 <div class="user-setting-title _titles"> Настройки акаунта</div>
             </div>
             <div class="user-setting-body">
-                <div class="user-setting-avatar">
-                    <img v-lazy="myInfo.imgSrc ? myInfo.imgSrc : require('@/assets/img/setings-icons/avatar.png')" alt="Avatar">
-                    <input @change="onFileChange" type="file" accept="image/*">
+                <div class="user-setting-body-content">
+                    <div class="user-setting-avatar">
+                        <img v-lazy="myInfo.imgSrc ? myInfo.imgSrc : require('@/assets/img/setings-icons/avatar.png')" alt="Avatar">
+                        <input @change="onFileChange" type="file" accept="image/*">
+                    </div>
+                    <div class="user-setting-info">
+                        <div class="user-setting-info-type _btns-tabs-names_in_msgs">Имя</div>
+                        <div class="user-setting-info-title _btns-tabs-names_in_msgs">{{ myInfo.name }}</div>
+                    </div>
+                    <div class="user-setting-info">
+                        <div class="user-setting-info-type _btns-tabs-names_in_msgs">Email</div>
+                        <div class="user-setting-info-title _btns-tabs-names_in_msgs">{{ myInfo.email }}</div>
+                    </div>
                 </div>
-                <div class="user-setting-info">
-                    <div class="user-setting-info-type _btns-tabs-names_in_msgs">Имя</div>
-                    <div class="user-setting-info-title _btns-tabs-names_in_msgs">{{ myInfo.name }}</div>
-                </div>
-                <div class="user-setting-info">
-                    <div class="user-setting-info-type _btns-tabs-names_in_msgs">Email</div>
-                    <div class="user-setting-info-title _btns-tabs-names_in_msgs">{{ myInfo.email }}</div>
-                </div>
-                <button @click="$store.dispatch('logout')" style="background-color: red; margin-top: 150px;" type="submit" class="_violet-button">
+                <button @click="$store.dispatch('logout')" style="background-color: red;" type="submit" class="_violet-button">
                     <img src="@/assets/img/setings-icons/arrow.png" alt="#">
                 </button>
             </div>
@@ -74,11 +76,21 @@ methods: {
 }
 .user-setting-title {
 }
+.user-setting-content{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
 .user-setting-body {
     width: 100%;
+    flex-grow: 1;
     display: flex;
     align-items: center;
     flex-direction: column;
+    
+}
+.user-setting-body-content {
+    flex-grow: 1;
 }
 .user-setting-avatar {
 }

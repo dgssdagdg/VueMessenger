@@ -19,7 +19,7 @@
       </div>
       <div class="messenger-left-chats">
         <div class="messenger-left-top">
-          <div class="messenger-left-top-title">Чаты</div>
+          <div class="messenger-left-top-title _chats-title">Чаты</div>
           <div class="messenger-left-top-menu">
             <div
               @click.stop="showChatMenu = true"
@@ -78,7 +78,7 @@
               />
               <div
                 v-if="infoSearchQuery || showSearchBlock"
-                class="messenger-left-users-input-items scrollable-element"
+                class="messenger-left-users-input-items"
               >
                 <my-global-users
                   :user="saveUser"
@@ -88,7 +88,7 @@
                 />
               </div>
             </div>
-            <div class="messenger-left-users-block scrollable-element">
+            <div class="messenger-left-users-block">
               <my-users
                 :user="saveUser"
                 v-for="saveUser in [...infoMyChats, ...infoGroups, ...infoCanals]"
@@ -201,6 +201,8 @@ export default {
   justify-content: center;
 }
 .messenger-left {
+    display: flex;
+    flex-direction: column;
     flex: 0 1 370px;
     background-color: #fff;
 }
@@ -234,6 +236,9 @@ export default {
 .messenger-left-chats {
     padding: 32.5px 40px;
     position: relative;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 .messenger-left-top {
     display: flex;
@@ -242,11 +247,6 @@ export default {
     margin-bottom: 20px;
 }
 .messenger-left-top-title {
-    color: rgb(25, 24, 22);
-    font-size: 32px;
-    font-weight: 900;
-    line-height: calc(39 / 32 * 100%);
-    letter-spacing: 0%;
 }
 .messenger-left-top-menu {
   position: relative;
@@ -275,6 +275,9 @@ export default {
   }
 }
 .messenger-left-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 .messenger-left-categories {
     display: flex;
@@ -294,6 +297,9 @@ export default {
     column-gap: 9px;
 }
 .messenger-left-users {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 .messenger-left-users-input {
     margin-bottom: 20px;
@@ -321,7 +327,8 @@ export default {
     display: flex;
     flex-direction: column;
     row-gap: 12px;
-    height: 373px;
+    height: 200px;
+    flex-grow: 1;
     overflow-y: auto;
 }
 ::-webkit-scrollbar {
@@ -353,10 +360,10 @@ export default {
 }
 @media(max-width: 998px) {
   .messenger-left {
-      flex: 0 1 100%;
+    flex: 0 1 100%;
   }
   .messenger-left-settings {
-      justify-content: space-around;
+    justify-content: space-around;
   }
   .messenger-left-show {
     display: none;

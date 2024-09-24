@@ -2,12 +2,12 @@
     <div class="chat-sing-wrapper">
         <div class="chat-sign">
             <div class="chat-sign-info">
-                <div class="chat-sign-info-img">
+                <div @dblclick="click" class="chat-sign-info-img">
                     <img v-lazy="infoFullActiveChat.imgSrc ? infoFullActiveChat.imgSrc : require('@/assets/img/avatar.jpeg')" alt="#">
                 </div>
                 <div class="chat-sign-info-block">
-                    <div class="chat-sign-info-name">{{ infoFullActiveChat.name }}</div>
-                    <div v-if="infoFullActiveChat.type == 'chatUsers'" class="chat-sign-info-status">{{ getMinutesSinceLastSeen }}</div>
+                    <div style="color: black;" class="chat-sign-info-name _btns-tabs-names_in_msgs">{{ infoFullActiveChat.name }}</div>
+                    <div v-if="infoFullActiveChat.type == 'chatUsers'" class="chat-sign-info-status _main">{{ getMinutesSinceLastSeen }}</div>
                 </div>
             </div>
             <div class="chat-sign-control">
@@ -235,6 +235,9 @@ export default {
 @media(max-width: 998px) {
     .leave-in-chat {
         display: flex;
+    }
+    .notice-btn-icon {
+        height: auto;
     }
 }
 @media(max-width: 767px)  {

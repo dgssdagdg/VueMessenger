@@ -62,6 +62,18 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
   background-color: #333232;
 }
 //Глобалтные стили шрифтов---------------------
+._secondary {
+    color: rgb(124, 128, 146);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: calc(15 / 12 * 100%);
+}
+._main {
+  color: rgb(124, 128, 146);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: calc(19 / 16 * 100%);
+}
 ._titles {
   color: rgb(25, 24, 22);
   font-size: 22px;
@@ -87,28 +99,11 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
   line-height: 130%;
 }
 //buttons-----------------------------
-._blue-button {
-  color: rgb(255, 255, 255);
-  font-size: 16px;
-  font-weight: 700;
-  line-height: calc(22 / 16 * 100%);
-  border-radius: 10px;
-  background: rgb(0, 132, 255);
-  height: 38px;
-  padding: 0 12.5px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all .3s ease 0s;
-  &:hover {
-      background: rgb(3, 117, 223);
-  }
-}
 ._violet-button {
   margin-left: auto;
-  margin-top: 40%;
+  margin-top: 20px;
   width: 64px;
-  height: 64px;
+  min-height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,6 +128,8 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: inherit;}
   height: 100%;
   background-color: white;
   padding: 32px 40px 12px 31px;
+  display: flex;
+  flex-direction: column;
 }
 ._pop-up {
   position: absolute;

@@ -24,27 +24,21 @@
                         <img v-lazy="user.imgSrc ? user.imgSrc : require('@/assets/img/avatar.jpeg')" alt="Avatar Img" class="chat-setting-item-img">
                         <div class="chat-setting-item-name _btns-tabs-names_in_msgs">{{ user.name }}</div>
                     </div>
-                    <button
+                    <my-button
                         v-if="this.fetchMeAcaunt[0].admin === true"
                         @click="deleteParticipants(user)"
-                        type="button"
-                        class="chat-setting-item-delete _notification-main1"
-                    >Удалить</button>
+                    >Удалить</my-button>
                 </div>
                 <div class="_btns-tabs-names_in_msgs" v-if="fetchChatsParticipants.length <= 0">Вы единственный пользователь</div>
             </div>
-            <button
+            <my-button
                 v-if="this.fetchMeAcaunt[0].admin === true"
                 @click="$store.commit('setShowAddUserInChat', true)"
-                type="button"
-                class="chat-setting-add-user _notification-main1"
-            >Добавить пользователя</button>
-            <button
+            >Добавить пользователя</my-button>
+            <my-button
                 @click="$store.dispatch('deleteChatParticipants', fetchMeAcaunt[0])"
-                type="button"
                 style="background-color: red; margin-top: 10px"
-                class="chat-setting-add-user _notification-main1"
-            >Выйти из чата</button>
+            >Выйти из чата</my-button>
         </div>
         <img @click="closeChatSetting" src="@/assets/img/setings-icons/arrow-left.png" alt="closeChat" class="create-chat-close">
     </div>
@@ -103,9 +97,12 @@ export default {
     padding: 32px 40px 12px 31px;
     z-index: 3;
     border-top: 1px solid rgba(25, 24, 22, 0.2);
+    display: flex;
+    flex-direction: column
 }
 .chat-setting-content {
     @include item-centring;
+    flex-grow: 1;
 }
 .chat-setting-top-title {
     margin-bottom: 35px;
@@ -129,6 +126,7 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
 }
 .chat-setting-title {
     margin-bottom: 22px;
@@ -137,7 +135,8 @@ export default {
     @include item-centring;
     row-gap: 14px;
     margin-bottom: 15px;
-    flex: 0 1 170px;
+    height: 100px;
+    flex-grow: 1;
     overflow-y: auto;
 }
 .chat-setting-item {
@@ -219,5 +218,14 @@ export default {
 .scrollable-element {
     scrollbar-width: thin; /* Тонкий скролл */
     scrollbar-color: #888 #f1f1f1; /* Цвет ползунка и фона */
+}
+@media(max-width: 998px) {
+    .chat-setting {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+    }
 }
 </style>

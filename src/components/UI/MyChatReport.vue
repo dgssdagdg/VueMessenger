@@ -44,7 +44,7 @@
                 <img src="@/assets/img/chat-icons/check.png" alt="check">
             </div>
         </div>
-        <div class="main-chat-date">{{ chatReport.date }}</div>
+        <div class="main-chat-date _secondary">{{ chatReport.date }}</div>
     </div>
 </template>
 
@@ -227,5 +227,16 @@ export default {
     background-color: transparent; /* Цвет затухания */
   }
 }
-
+@media(max-width: 767px) {
+    .main-chat-text-file-block {
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+    .main-chat-text {
+        max-width: 80%;
+        & audio {
+            width: 250px;
+        }
+    }
+}
 </style>

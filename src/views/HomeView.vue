@@ -63,8 +63,7 @@ export default {
 .messenger {
   display: flex;
   justify-content: flex-start;
-  // height: 750px;
-  height: auto;
+  flex-grow: 1;
   width: 100%;
   max-width: 1440px;
   overflow: hidden;

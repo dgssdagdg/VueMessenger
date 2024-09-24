@@ -10,6 +10,9 @@ export default {
         auth.onAuthStateChanged(user => {
             if (user) {
                 this.$store.dispatch('setUserOnlineStatus', true)
+                window.addEventListener('beforeunload', () => {
+                    this.$store.dispatch('setUserOnlineStatus', false) // Устанавливаем статус в "offline" перед уходом
+                });
             }
         });
     },

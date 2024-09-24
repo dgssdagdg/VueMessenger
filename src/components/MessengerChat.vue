@@ -2,7 +2,7 @@
 <div
     v-if="infoFullActiveChat"
     class="messenger-chat"
-    :class="{'messenger-chat-media-show' : infoFullActiveChat}"
+    
 >
     <ChatSing/>
     <div
@@ -14,6 +14,7 @@
         <div ref="messagesContainer" class="main-chat-body">
             <my-chat-report
                 @contextmenu.prevent="(event) => openContextMenu(event, chatReport)"
+                @dblclick="(event) => openContextMenu(event, chatReport)"
                 v-for="chatReport in infoActiveChat"
                 :chatReport="chatReport"
                 :key="chatReport.id"
@@ -82,6 +83,9 @@ export default {
         ChatSing, CreateChatReport, CreateFileMessage, AddUserInChat
     },
     methods: {
+        push() {
+            console.log('1');
+        },
         openContextMenu(event, report) {
             this.showMenu = true;
             this.report = report
@@ -167,9 +171,12 @@ export default {
 <style lang="scss" scoped>
 .messenger-chat {
     flex: 0 1 1070px;
+    display: flex;
+    flex-direction: column;
     border-left: 1px solid rgba(25, 24, 22, 0.2);
 }
 .main-chat {
+    flex-grow: 1;
     background: rgb(245, 245, 247);
     // flex: 1 1 100%;
     display: flex;
@@ -177,7 +184,8 @@ export default {
     align-items: center;
 }
 .main-chat-body {
-   flex: 1 1 580px;
+   flex-grow: 1;
+   height: 200px;
    max-width: 660px;
    width: 100%;
    margin: 0 auto;
@@ -200,16 +208,13 @@ export default {
 }
 //-----------------------------
 @media(max-width: 998px) {
-    .messenger-chat-media-show {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        border-left: none;
-    }
-    // .main-chat {
+    // .messenger-chat-media-show {
+    //     position: absolute;
+    //     top: 0;
+    //     left: 0;
+    //     width: 100%;
     //     height: 100%;
+    //     border-left: none;
     // }
 }
 </style>

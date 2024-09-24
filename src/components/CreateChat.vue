@@ -1,16 +1,18 @@
 <template>
 <div v-if="show" class="create-chat _pop-up-white">
     <form @submit.prevent="createGroup(status.action)" class="create-chat-form">
-        <div class="create-chat-title">{{ status.title }}</div>
-        <div class="create-chat-avatar">
-            <img :src="imageSrc" alt="Avatar">
-            <input @change="onFileChange" type="file" accept="image/*">
+        <div class="create-chat-form-content">
+            <div class="create-chat-title _titles">{{ status.title }}</div>
+            <div class="create-chat-avatar">
+                <img :src="imageSrc" alt="Avatar">
+                <input @change="onFileChange" type="file" accept="image/*">
+            </div>
+            <div class="create-chat-inputs">
+                <my-input placeholder="Название" v-model="chatName"/>
+                <my-input placeholder="Описание (необязательно)" v-model="chatDescription"/>
+            </div>
         </div>
-        <div class="create-chat-inputs">
-            <my-input placeholder="Название" v-model="chatName"/>
-            <my-input placeholder="Описание (необязательно)" v-model="chatDescription"/>
-        </div>
-        <button style="margin-top: 120px;" type="submit" class="create-chat-btn _violet-button">
+        <button type="submit" class="create-chat-btn _violet-button">
             <img src="@/assets/img/setings-icons/arrow.png" alt="#">
         </button>
     </form>
@@ -81,13 +83,10 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-grow: 1;
 }
 .create-chat-title {
     margin-bottom: 33px;
-    color: rgb(25, 24, 22);
-    font-size: 22px;
-    font-weight: 600;
-    line-height: calc(27 / 22 * 100%);
 }
 .create-chat-avatar {
     margin-bottom: 28px;
@@ -110,6 +109,12 @@ export default {
         cursor: pointer;
         opacity: 0;
     }
+}
+.create-chat-form-content {
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .create-chat-inputs {
     display: flex;

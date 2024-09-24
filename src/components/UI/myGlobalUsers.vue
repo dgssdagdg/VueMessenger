@@ -49,7 +49,7 @@ export default {
 }
 .messenger-left-users-user-img {
     height: 48px;
-    max-width: 48px;
+    width: 48px;
     & img {
         border-radius: 100%;
         width: 100%;
