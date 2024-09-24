@@ -23,7 +23,7 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: createWebHistory('/VueMessenger'),
+  history: createWebHistory(process.env.BASE_URL),
   routes
 })
 
