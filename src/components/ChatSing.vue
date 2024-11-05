@@ -16,7 +16,11 @@
                     <div @click="myAlert" class="chat-sign-control-block-item icon-video"></div>
                 </div>
                 <div class="chat-sign-control-block">
-                    <div style="opacity: 0.5; font-size: 28px;" @click="myAlert" class="chat-sign-control-block-item icon-lupa"></div>
+                    <div
+                        style="opacity: 0.5; font-size: 28px;"
+                        @click="SetShowChatSearch(false === showChatSearch), SetChatSearch('');"
+                        class="chat-sign-control-block-item icon-lupa"
+                    ></div>
                     <div
                         style="opacity: 0.5; font-size: 28px;"
                         @click="$store.commit('SetShowChatSetting', true)"
@@ -42,6 +46,23 @@
             <img src="@/assets/img/setings-icons/arrow.png" alt="#">
         </div>
         <CallComponent v-if="false"/>
+
+        <div v-if="showChatSearch" class="chat-sign-search">
+            <my-input
+                :model-value="chatSearch" 
+                @update:model-value="SetChatSearch"
+                placeholder="Поиск"
+                :class="{'input-not-empty': chatSearch != ''}"
+            />
+            <div class="chat-sign-search-body">
+                <div
+                :key="report.id"
+                v-for="report in chatSearchFilter(activeChat)"
+                class="chat-sign-search-item _btns-tabs-names_in_msgs"
+                @click="chatSearchItemClick(report.id)"
+                ><span>{{ report.title }}</span></div>
+            </div>
+        </div>
     </div>
 
 </template>
@@ -49,20 +70,21 @@
 <script>
 import ChatSetting from './ChatSetting.vue';
 import CallComponent from './CallComponent.vue';
+import {mapActions, mapState, mapGetters, mapMutations} from 'vuex';
 export default {
     computed: {
-        infoShowChatSetting() {
-            return this.$store.getters.infoShowChatSetting
-        },
-        infoNotice() {
-            return this.$store.getters.infoNotice
-        },
-        infoUsers() {
-            return this.$store.getters.infoUsers
-        },
-        infoFullActiveChat() {
-            return this.$store.getters.infoFullActiveChat
-        },
+        ...mapState({
+            showChatSearch: s => s.messeng.showChatSearch,
+            activeChat: s => s.fetchInfo.activeChat,
+            chatSearch: s => s.messeng.chatSearch,
+            infoShowChatSetting: s => s.messeng.showChatSetting,
+            infoNotice: s => s.fetchInfo.notice,
+            infoUsers: s => s.fetchInfo.users,
+            infoFullActiveChat: s => s.fetchInfo.fullActiveChat,
+        }),
+        ...mapGetters({
+            chatSearchFilter: 'chatSearchFilter'
+        }),
         getMinutesSinceLastSeen() {
             const filterUsers = this.infoUsers.find(item => item.id == this.infoFullActiveChat.id)
             if(filterUsers.lastSeen == null){return 'Пользователь в сети'}
@@ -90,15 +112,25 @@ export default {
             } else {
                 return `Пользователь был в сети ${diffInMinutes} ${diffInMinutes === 1 ? 'минуту' : 'минуты'} назад.`;
             }
-        }
+        },
     },
     methods: {
+        ...mapMutations({
+            SetChatSearchIdScroll: 'SetChatSearchIdScroll',
+            SetChatSearch: 'SetChatSearch',
+            SetShowChatSearch: 'SetShowChatSearch'
+        }),
         myAlert() {
-            alert('Данная функцианал еще в разработке и работает на данный момент только три точки')
+            alert('Данная функцианал еще в разработке и работает на данный момент только три точки и лупа')
         },
         clearChat() {
             this.$store.commit('SetInfoWindow', '')
             this.$store.commit('SetFullActiveChat', '')
+        },
+        chatSearchItemClick(id) {
+            this.SetChatSearch('');
+            this.SetShowChatSearch(false);
+            this.SetChatSearchIdScroll(id)
         }
     },
     components: {
@@ -200,6 +232,51 @@ export default {
     top: 3px;
     right: 3px;
 }
+
+//.chat-sign-search---------------------------------------------
+
+.chat-sign-search {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    max-width: 370px;
+    width: 100%;
+    border-radius: 0px 0px 5px 5px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background: rgb(255, 255, 255);
+    padding: 20px;
+    flex-wrap: wrap;
+    z-index: 2;
+}
+.chat-sign-search-body {
+    margin-top: 30px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    width: 100%;
+    overflow-y: auto;
+}
+.chat-sign-search-item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    color: white;
+    background: rgb(48, 50, 62);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .3s ease 0s;
+    & span {
+        overflow: hidden;
+        display: inline;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    &:hover {
+        background: rgb(0, 0, 0); 
+    }
+}
 @media(max-width: 1200px) {
     .chat-sign-control {
         column-gap: 20px;
@@ -237,6 +314,13 @@ export default {
     .chat-sign-control {
         width: 100%;
         justify-content: space-between;
+    }
+    .chat-sign-search {
+        max-width: 100%;
+        border-top: 1px solid rgba(25, 24, 22, 0.2);
+    }
+    .chat-sign-search-body {
+        height: 100px;
     }
 }
 </style>

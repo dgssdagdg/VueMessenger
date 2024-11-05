@@ -312,7 +312,7 @@ export default {
 }
 ._black-mode {
   & .messenger-left-settings, & .messenger-left-chats, & .chat-sing-wrapper, & .main-chat,
-  & .main-chat-form, & ._pop-up-white, & .chat-setting, & ._pop-up-body, & .notifications, & .main-chat-item-left .main-chat-text {
+  & .main-chat-form, & ._pop-up-white, & .chat-setting, & ._pop-up-body, & .notifications, & .main-chat-item-left .main-chat-text, & .chat-sign-search {
     background: rgb(33,33,33);
   }
   & .main-chat {
@@ -365,7 +365,34 @@ export default {
     color: #766ac87d !important;
   }
   & .reply-message-report {
-    background: rgb(118 106 200 / 49%);
+    background: rgba(0, 0, 0, 0.7);
   }
+}
+::-webkit-scrollbar {
+    width: 5px; /* Ширина скролл-бара */
+    height: 5px; /* Высота (для горизонтального скролла) */
+}
+
+/* Фон скролл-бара */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Цвет фона трека */
+    border-radius: 10px; /* Закругление углов */
+}
+
+/* Ползунок скролл-бара */
+::-webkit-scrollbar-thumb {
+    background: #888; /* Цвет ползунка */
+    border-radius: 10px; /* Закругление углов */
+}
+
+/* Эффект при наведении на ползунок */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Более темный цвет при наведении */
+}
+
+/* Для Firefox */
+.scrollable-element {
+    scrollbar-width: thin; /* Тонкий скролл */
+    scrollbar-color: #888 #f1f1f1; /* Цвет ползунка и фона */
 }
 </style>

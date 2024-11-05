@@ -6,6 +6,9 @@ export default {
         showAddUserInChat: false,
         showUserSetting: false,
         saitMode: false,
+        chatSearch: '',
+        showChatSearch: false,
+        chatSearchIdScroll: undefined,
     },
     getters: {
         infoShowPopUp: s => s.showPopUp,
@@ -13,6 +16,11 @@ export default {
         infoShowAddUserInChat: s => s.showAddUserInChat,
         infoShowUserSetting: s => s.showUserSetting,
         infoSaitMode: s => s.saitMode,
+        chatSearchFilter: (state) => (activeChat) => {
+            return [...activeChat].filter(i => {
+                return i.title != undefined ? i.title.toUpperCase().includes(state.chatSearch.toUpperCase()) : false
+            });
+        }
     },
     mutations: {
         showNotification(state, type) {
@@ -32,6 +40,15 @@ export default {
         },
         SetSaitMode(state, info) {
             state.saitMode = info
+        },
+        SetChatSearch(state, chatSearch) {
+            state.chatSearch = chatSearch
+        },
+        SetShowChatSearch(state, info) {
+            state.showChatSearch = info
+        },
+        SetChatSearchIdScroll(state, info) {
+            state.chatSearchIdScroll = info
         },
     },
     actions: {

@@ -52,6 +52,7 @@ import ChatSing from '@/components/ChatSing.vue';
 import CreateChatReport from '@/components/CreateChatReport.vue';
 import CreateFileMessage from './CreateFileMessage.vue';
 import AddUserInChat from './AddUserInChat.vue';
+import {mapActions, mapState, mapGetters, mapMutations} from 'vuex';
 export default {
     data() {
         return {
@@ -161,7 +162,15 @@ export default {
             });
             return this.$store.getters.infoActiveChat
         },
+        ...mapState({
+            chatSearchIdScroll: s => s.messeng.chatSearchIdScroll,
+        }),
     },
+    watch: {
+    chatSearchIdScroll(newValue, oldValue) {
+      this.goToMessage(newValue)
+    }
+  }
 }
 </script>
 
