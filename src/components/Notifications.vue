@@ -4,10 +4,8 @@
         @click="$store.commit('showNotification', false)"
         class="notifications-top"
      >
-        <div class="notifications-title">Уведомления</div>
-        <div class="notifications-close">
-            <img src="@/assets/img/chat-icons/dublarrow.png" alt="Close notifications">
-        </div>
+        <div class="notifications-title _titles">Уведомления</div>
+        <div style="transform: rotate(180deg); font-size: 16px;" class="notifications-close icon-arrows"></div>
     </div>
     <div class="notifications-body">
         <my-notice
@@ -18,7 +16,7 @@
     </div>
     <div class="notifications-setting">
         <div @click="$store.dispatch('clearNotice')" class="notifications-clear">
-            <img src="../assets/img/chat-icons/checktwo.png" alt="Отметить прочитанными">
+            <span style="font-size: 16px;" class="icon-check-one"></span>
             Отметить прочитанными
         </div>
     </div>
@@ -56,10 +54,6 @@ export default {
     cursor: pointer;
 }
 .notifications-title {
-    color: rgb(25, 24, 22);
-    font-size: 22px;
-    font-weight: 600;
-    line-height: calc(27 / 22 * 100%);
 }
 .notifications-close {
 }

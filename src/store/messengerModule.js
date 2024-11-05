@@ -5,12 +5,14 @@ export default {
         showChatSetting: false,
         showAddUserInChat: false,
         showUserSetting: false,
+        saitMode: false,
     },
     getters: {
         infoShowPopUp: s => s.showPopUp,
         infoShowChatSetting: s => s.showChatSetting,
         infoShowAddUserInChat: s => s.showAddUserInChat,
         infoShowUserSetting: s => s.showUserSetting,
+        infoSaitMode: s => s.saitMode,
     },
     mutations: {
         showNotification(state, type) {
@@ -27,6 +29,9 @@ export default {
         },
         SetShowUserSetting(state, info) {
             state.showUserSetting = info
+        },
+        SetSaitMode(state, info) {
+            state.saitMode = info
         },
     },
     actions: {

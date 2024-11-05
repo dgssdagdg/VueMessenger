@@ -16,7 +16,7 @@
             <img src="@/assets/img/setings-icons/arrow.png" alt="#">
         </button>
     </form>
-    <img @click="closeForm" src="@/assets/img/setings-icons/arrow-left.png" alt="closeChat" class="create-chat-close">
+    <div @click="closeForm" class="create-chat-close icon-arrow"></div>
 </div>
 </template>
 

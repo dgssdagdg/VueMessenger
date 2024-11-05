@@ -40,7 +40,7 @@
                 style="background-color: red; margin-top: 10px"
             >Выйти из чата</my-button>
         </div>
-        <img @click="closeChatSetting" src="@/assets/img/setings-icons/arrow-left.png" alt="closeChat" class="create-chat-close">
+        <div @click="closeChatSetting" class="create-chat-close icon-arrow"></div>
     </div>
 </div>
 </template>

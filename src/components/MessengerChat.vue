@@ -62,17 +62,17 @@ export default {
             y: 0,
             chatDropDownItems: [
                 {
-                    imgSrc: require('@/assets/img/chat-icons/answer-back.png'),
+                    imgSrc: 'icon-send-forward',
                     title: 'Ответить',
                     action: 'answerBack'
                 },
                 {
-                    imgSrc: require('@/assets/img/chat-icons/copy.png'),
+                    imgSrc: 'icon-copy',
                     title: 'Копировать',
                     action: 'copy'
                 },
                 {
-                    imgSrc: require('@/assets/img/chat-icons/delete.png'),
+                    imgSrc: 'icon-delete',
                     title: 'Удалить',
                     action: 'delete'
                 }
@@ -83,9 +83,6 @@ export default {
         ChatSing, CreateChatReport, CreateFileMessage, AddUserInChat
     },
     methods: {
-        push() {
-            console.log('1');
-        },
         openContextMenu(event, report) {
             this.showMenu = true;
             this.report = report
@@ -205,16 +202,5 @@ export default {
 .main-chat-body {
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
-}
-//-----------------------------
-@media(max-width: 998px) {
-    // .messenger-chat-media-show {
-    //     position: absolute;
-    //     top: 0;
-    //     left: 0;
-    //     width: 100%;
-    //     height: 100%;
-    //     border-left: none;
-    // }
 }
 </style>

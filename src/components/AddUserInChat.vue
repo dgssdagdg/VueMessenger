@@ -2,7 +2,7 @@
     <div @click="closePopUp" v-if="infoShowAddUserInChat" class="add-user-group _pop-up">
         <div @click.stop class="add-user-group-body _pop-up-body">
             <div class="_pop-up-top">
-                <img @click.stop="closePopUp" src="@/assets/img/setings-icons/arrow-left.png" alt="closeChat" class="chat-files-form-close">
+                <span @click.stop="closePopUp" class="chat-files-form-close icon-arrow"></span>
                 <div class="_titles">Пользвотали</div>
             </div>
             <div class="add-user-group-block">
@@ -12,7 +12,7 @@
                     style="padding-left: 15px;"
                     placeholder="Поиск..."
                 />
-                <div class="add-user-group-users scrollable-element">
+                <div class="add-user-group-users">
                     <div
                         class="add-user-group-user"
                         v-for="user in sortedSearchNotParticipantsUsers"
@@ -93,6 +93,12 @@ export default {
     display: flex;
     align-items: center;
     column-gap: 6px;
+    & img {
+        height: 48px;
+        width: 48px;
+        object-fit: cover;
+        border-radius: 100%;
+    }
 }
 ::-webkit-scrollbar {
     width: 5px; /* Ширина скролл-бара */

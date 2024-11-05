@@ -4,16 +4,7 @@
         <div class="reply-message-name">{{ infoReplyMessageUser.name }}</div>
         <div class="reply-message-type">{{ infoReplyMessage.title }}</div>
     </div>
-    <div @click="clearInfo" class="reply-message-delete">
-        <svg width="20.000000" height="20.000244" viewBox="0 0 20 20.0002" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-	<desc>
-			Created with Pixso.
-	</desc>
-	<defs/>
-	<rect id="Прямоугольник 4" x="18.419922" width="2.135201" height="26.049458" transform="rotate(45 18.419922 0.000000)" fill="#99C0F0" fill-opacity="1.000000"/>
-	<rect id="Прямоугольник 4" x="0.070312" y="1.580505" width="2.135201" height="26.049458" transform="rotate(-45 0.070312 1.580505)" fill="#99C0F0" fill-opacity="1.000000"/>
-        </svg>
-    </div>
+    <div style="color: #99C0F0; font-size: 20px;" @click="clearInfo" class="reply-message-delete icon-close"></div>
 </div>
 </template>
 
@@ -56,7 +47,7 @@ export default {
     display: flex;
     flex-direction: column;
     row-gap: 5px;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 10px;
     background: rgba(229, 243, 254, .8);
     padding: 6px;
 }

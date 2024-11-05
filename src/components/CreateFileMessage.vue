@@ -5,8 +5,9 @@
 >
     <form @submit.prevent="createFileMessage(infoFullActiveChat)" @click.stop class="chat-files-form _pop-up-body">
         <div class="_pop-up-top">
-            <img @click.stop="closePopUp" src="@/assets/img/setings-icons/arrow-left.png" alt="closeChat" class="chat-files-form-close">
-            <div class="chat-files-form-top-title">Отправить файл</div>
+            <span @click.stop="closePopUp" class="chat-files-form-close icon-arrow"></span>
+            <img >
+            <div class="chat-files-form-top-title _titles">Отправить файл</div>
         </div>
         <div class="chat-files-form-body">
             <div
@@ -30,11 +31,11 @@
             </div>
         </div>
         <div class="chat-files-form-addfile">
-            <span>
+            <div>
                 <input v-if="infoShowPopUp == 'photo'" @change="onFileChange" type="file" accept="image/*, video/*">
                 <input v-if="infoShowPopUp == 'file'" @change="onFileChange" type="file">
                 Добавить файл
-            </span>
+            </div>
         </div>
         
         <div class="chat-files-form-end">
@@ -84,10 +85,13 @@ export default {
             const report = {
                 title: this.signature,
                 date: new Date().toTimeString().slice(0, 5),
-                position: 'rigth',
                 files: this.fileArray,
                 type: this.infoShowPopUp,
                 user: user
+            }
+            if(this.fileArray.length == 0) {
+                alert('Добавьте файл!')
+                return
             }
             this.$store.dispatch('addNewReport', report)
             this.closePopUp()
@@ -113,10 +117,6 @@ export default {
     cursor: pointer;
 }
 .chat-files-form-top-title {
-    color: rgb(25, 24, 22);
-    font-size: 22px;
-    font-weight: 600;
-    line-height: calc(27 / 22 * 100%);
 }
 .chat-files-form-body {
     margin-bottom: 13px;
@@ -155,7 +155,7 @@ export default {
     align-items: center;
     justify-content: center;
     margin-bottom: 18px;
-    & span {
+    & div {
         position: relative;
         display: flex;
         cursor: pointer;

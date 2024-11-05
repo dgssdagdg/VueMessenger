@@ -40,9 +40,7 @@
 
             {{ chatReport.title }}
 
-            <div v-if="myInfo.uid == chatReport.auth" class="main-chat-status">
-                <img src="@/assets/img/chat-icons/check.png" alt="check">
-            </div>
+            <div style="font-size: 8px; opacity: .7;" v-if="myInfo.uid == chatReport.auth" class="main-chat-status icon-check"></div>
         </div>
         <div class="main-chat-date _secondary">{{ chatReport.date }}</div>
     </div>

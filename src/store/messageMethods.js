@@ -43,14 +43,17 @@ export default {
                 let user = userInfo
                 const myUserInfo = getters.myInfo
                 const chat = getters.infoFullActiveChat
+
                 // Происходит проверка удаляеться другой пользователь или я 
                 if(!user.id) {
                     user.id = user.uid
                 }
+
                 const chatRef = doc(db, chat.type, chat.id);
                 const userRef = doc(db, 'users', user.id, `my${chat.type}`, chat.id);
                 const filter = chat.usersChat.filter(item => item.uid != user.id)
                 await deleteDoc(userRef);
+
                 if(chat.usersChat.length <= 1) {
                     await deleteDoc(chatRef);
                     commit('SetFullActiveChat', '')
@@ -59,6 +62,7 @@ export default {
                         usersChat: filter
                     });
                 }
+                
                 const myUserRef = await getDoc(doc(db, 'users', auth.currentUser.uid))
                 const info = myUserRef.data()
                 const message = {
@@ -67,6 +71,7 @@ export default {
                     text: `удалил(а) Вас из группу «${chat.name}»`,
                     date: new Date().toISOString(),
                 }
+
                 //Отправка уведомления о добавки в чат
                 if(myUserInfo.uid != user.uid) {
                     await updateDoc(doc(db, 'users', user.id), {

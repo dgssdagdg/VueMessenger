@@ -6,7 +6,7 @@
             class="dropdown-menu-item"
             @click="openForm(chatDropDownItem)"
          >
-          <img :src="chatDropDownItem.imgSrc" :alt="chatDropDownItem.title">
+         <span :class="chatDropDownItem.imgSrc"></span>
           {{ chatDropDownItem.title }}
         </div>
     </div>

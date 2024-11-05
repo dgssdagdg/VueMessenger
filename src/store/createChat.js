@@ -63,12 +63,11 @@ export default {
                 console.error(error);
             }
         },
-        async addNewReport({commit, dispatch}, {title, date, position, user, type, files, audioUrl, replyMessage}) {
+        async addNewReport({commit, dispatch}, {title, date, user, type, files, audioUrl, replyMessage}) {
             try {
                 // Создание нового сообщения
                 let newMessage = {
                     date,
-                    position,
                     auth: auth.lastNotifiedUid
                 };
         

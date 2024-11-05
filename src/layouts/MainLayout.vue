@@ -5,7 +5,8 @@
 <script>
 import { auth } from '@/firebase';
 export default {
-    created() {
+    name: 'main-layout',
+    async mounted() {
         // Наблюдение за изменением состояния аутентификации
         auth.onAuthStateChanged(user => {
             if (user) {
@@ -15,9 +16,8 @@ export default {
                 });
             }
         });
-    },
-    name: 'main-layout',
-    async mounted() {
+
+
         try {
             // Создание массива функций для загрузки данных
             const fetchActions = [

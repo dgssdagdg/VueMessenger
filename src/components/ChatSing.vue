@@ -12,36 +12,16 @@
             </div>
             <div class="chat-sign-control">
                 <div class="chat-sign-control-block">
-                    <div @click="myAlert" class="chat-sign-control-block-item">
-                        <img src="../assets/img/chat-icons/phone.png" alt="#">
-                    </div>
-                    <div @click="myAlert" class="chat-sign-control-block-item">
-                        <img src="../assets/img/chat-icons/video.png" alt="#">
-                    </div>
+                    <div @click="myAlert" class="chat-sign-control-block-item icon-phone"></div>
+                    <div @click="myAlert" class="chat-sign-control-block-item icon-video"></div>
                 </div>
                 <div class="chat-sign-control-block">
-                    <div @click="myAlert" class="chat-sign-control-block-item">
-                        <svg width="28.184570" height="26.470551" viewBox="0 0 28.1846 26.4706" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <g opacity="0.500000">
-                                <path id="Vector" d="M10.5 21C16.29 21 21 16.29 21 10.5C21 4.7 16.29 0 10.5 0C4.7 0 0 4.7 0 10.5C0 16.29 4.7 21 10.5 21ZM10.5 17.13C6.83 17.13 3.86 14.16 3.86 10.5C3.86 6.83 6.83 3.86 10.5 3.86C14.16 3.86 17.13 6.83 17.13 10.5C17.13 14.16 14.16 17.13 10.5 17.13ZM17 20.5L21.5 25C25.5 29 31 24 26.5 20L21.5 16L17 20.5Z" fill="#191816" fill-opacity="1.000000" fill-rule="evenodd"/>
-                            </g>
-                        </svg>
-
-                    </div>
-                    <div @click="$store.commit('SetShowChatSetting', true)" class="chat-sign-control-block-item">
-                        <svg width="6.000000" height="26.000000" viewBox="0 0 6 26" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <g opacity="0.500000">
-                                <circle id="Ellipse 1" r="3.000000" transform="matrix(6.12323e-17 -1 1 6.12323e-17 3 23)" fill="#191816" fill-opacity="1.000000"/>
-                            </g>
-                            <g opacity="0.500000">
-                                <circle id="Ellipse 2" r="3.000000" transform="matrix(6.12323e-17 -1 1 6.12323e-17 3 13)" fill="#191816" fill-opacity="1.000000"/>
-                            </g>
-                            <g opacity="0.500000">
-                                <circle id="Ellipse 3" r="3.000000" transform="matrix(6.12323e-17 -1 1 6.12323e-17 3 3)" fill="#191816" fill-opacity="1.000000"/>
-                            </g>
-                        </svg>
-
-                    </div>
+                    <div style="opacity: 0.5; font-size: 28px;" @click="myAlert" class="chat-sign-control-block-item icon-lupa"></div>
+                    <div
+                        style="opacity: 0.5; font-size: 28px;"
+                        @click="$store.commit('SetShowChatSetting', true)"
+                        class="chat-sign-control-block-item icon-dots"
+                    ></div>
                 </div>
             </div>
         </div>
@@ -51,7 +31,7 @@
             class="notice-btn-icon"
         >
             <div class="notice-btn-icon-img chat-sign-control-block-item">
-                <img src="../assets/img/chat-icons/notification.png" alt="#">
+                <span style="font-size: 30px;" class="icon-notification"></span>
                 <div v-if="infoNotice.length > 0" class="_my-status notice-btn-icon-img-status"></div>
             </div>
         </div>
@@ -61,12 +41,14 @@
         <div @click="clearChat" class="leave-in-chat _violet-button">
             <img src="@/assets/img/setings-icons/arrow.png" alt="#">
         </div>
+        <CallComponent v-if="false"/>
     </div>
 
 </template>
 
 <script>
 import ChatSetting from './ChatSetting.vue';
+import CallComponent from './CallComponent.vue';
 export default {
     computed: {
         infoShowChatSetting() {
@@ -120,7 +102,7 @@ export default {
         }
     },
     components: {
-        ChatSetting
+        ChatSetting, CallComponent
     }
 }
 </script>
@@ -148,7 +130,7 @@ export default {
     box-shadow: 5px 0px 12px 0px rgba(25, 24, 22, 0.15);
     background: rgb(255, 255, 255);
     height: 98px;
-    z-index: 2;
+    z-index: 3;
     position: relative;
 }
 .chat-sign {

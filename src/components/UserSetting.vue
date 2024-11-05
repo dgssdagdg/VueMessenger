@@ -2,9 +2,7 @@
     <div class="_pop-up-white user-setting">
         <div class="user-setting-content">
             <div @click="$store.commit('SetShowUserSetting', false)" class="user-setting-top">
-                <div class="user-setting-close">
-                    <img src="@/assets/img/chat-icons/dublarrow.png" alt="Close notifications">
-                </div>
+                <div style="font-size: 16px;" class="user-setting-close icon-arrows"></div>
                 <div class="user-setting-title _titles"> Настройки акаунта</div>
             </div>
             <div class="user-setting-body">
